@@ -185,6 +185,10 @@ def setup_rsession():
             'R_SHARE_DIR': R_SHARE_DIR,
             'RSTUDIO_DEFAULT_R_VERSION_HOME': R_HOME,
             'RSTUDIO_DEFAULT_R_VERSION': version,
+        } | {
+            var: val
+            for var in ('XDG_DATA_HOME', 'XDG_CACHE_HOME', 'XDG_CONFIG_HOME', 'XDG_STATE_HOME')
+            if (val := os.environ.get(var))
         }
 
     def _get_cmd(port):
