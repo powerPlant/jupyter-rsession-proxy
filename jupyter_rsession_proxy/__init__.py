@@ -56,9 +56,9 @@ def get_system_user():
 
 def setup_rserver():
     def _get_env(port, unix_socket):
-        return dict(USER=get_system_user())  | {
+        return dict(USER=get_system_user()) | {
             var: val
-            for var in ('XDG_DATA_HOME', 'XDG_CACHE_HOME', 'XDG_CONFIG_HOME', 'XDG_STATE_HOME')
+            for var in ('XDG_DATA_HOME', 'XDG_CACHE_HOME', 'XDG_CONFIG_HOME', 'XDG_STATE_HOME', 'RSTUDIO_DATA_HOME', 'RSTUDIO_CACHE_HOME', 'RSTUDIO_CONFIG_HOME', 'RSTUDIO_STATE_HOME')
             if (val := os.environ.get(var))
         }
 
